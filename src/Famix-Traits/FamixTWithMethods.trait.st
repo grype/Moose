@@ -49,11 +49,6 @@ FamixTWithMethods >> methods: anObject [
 
 ]
 
-{ #category : #enumeration }
-FamixTWithMethods >> methodsDo: aBlock [
-	self methods do: aBlock
-]
-
 { #category : #accessing }
 FamixTWithMethods >> methodsGroup [
 	<navigation: 'Methods'>
@@ -113,24 +108,6 @@ FamixTWithMethods >> numberOfConstructorMethods: aNumber [
 ]
 
 { #category : #metrics }
-FamixTWithMethods >> numberOfLinesOfCode [
-
-	<MSEProperty: #numberOfLinesOfCode type: #Number>
-	<derived>
-	<MSEComment: 'The number of lines of code in a class'>
-
-	^self
-		lookUpPropertyNamed: #numberOfLinesOfCode
-		computedAs: [self methodsGroup sumNumbers: #numberOfLinesOfCode]
-]
-
-{ #category : #metrics }
-FamixTWithMethods >> numberOfLinesOfCode: aNumber [
-
-	self privateState propertyAt: #numberOfLinesOfCode put: aNumber
-]
-
-{ #category : #metrics }
 FamixTWithMethods >> numberOfMessageSends [
 	<MSEProperty: #numberOfMessageSends type: #Number>
 	<derived>
@@ -145,23 +122,6 @@ FamixTWithMethods >> numberOfMessageSends [
 FamixTWithMethods >> numberOfMessageSends: aNumber [
 
 	self privateState propertyAt: #numberOfMessageSends put: aNumber
-]
-
-{ #category : #metrics }
-FamixTWithMethods >> numberOfMethodProtocols [
-	<MSEProperty: #numberOfMethodProtocols type: #Number>
-	<derived>
-	<MSEComment: 'The number of method protocols in a class'>
-	
-	^self
-		lookUpPropertyNamed: #numberOfMethodProtocols
-		computedAs: [((self methods collect: [:each | each category]) reject: #isNil) asSet size]
-]
-
-{ #category : #metrics }
-FamixTWithMethods >> numberOfMethodProtocols: aNumber [
-
-	self privateState propertyAt: #numberOfMethodProtocols put: aNumber
 ]
 
 { #category : #accessing }

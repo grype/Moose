@@ -66,23 +66,6 @@ FamixStMethod >> belongsTo: anObject [
 ]
 
 { #category : #'Famix-Extensions-metrics-support' }
-FamixStMethod >> category [
-	<MSEProperty: #category type: #String>
-	<MSEComment: 'Category of the method'>
-	<package: 'Smalltalk'>
-	
-	^ self privateState attributeAt: #category ifAbsentPut: [ nil ]
-]
-
-{ #category : #'Famix-Extensions-metrics-support' }
-FamixStMethod >> category: aString [
-
-	self privateState attributeAt: #category put: aString
-
-	
-]
-
-{ #category : #'Famix-Extensions-metrics-support' }
 FamixStMethod >> compiledMethod [
 	"Return the compiled method associated to the receiver or nil"
 	
@@ -92,7 +75,7 @@ FamixStMethod >> compiledMethod [
 ]
 
 { #category : #'Famix-Extensions-private' }
-FamixStMethod >> computeNumberOfLinesOfCodeIfSmalltalk [
+FamixStMethod >> computeNumberOfLinesOfCode [
 	| parser |
 	
 	parser := RBVisitorForFAMIXMetrics new.
@@ -316,15 +299,6 @@ FamixStMethod >> numberOfConditionals: aNumber [
 ]
 
 { #category : #'Famix-Extensions-private' }
-FamixStMethod >> numberOfLinesOfCode [
-	<MSEProperty: #numberOfLinesOfCode type: #Number>
-	<MSEComment: 'The number of lines of code in a method.'>
-	^ self
-		lookUpPropertyNamed: #numberOfLinesOfCode
-		computedAs: [ self computeNumberOfLinesOfCodeIfSmalltalk ]
-]
-
-{ #category : #'Famix-Extensions-private' }
 FamixStMethod >> numberOfMessageSends [
 	<MSEProperty: #numberOfMessageSends type: #Number>
 	<derived>
@@ -337,6 +311,23 @@ FamixStMethod >> numberOfMessageSends [
 			parser processMethod: self usingImporter: nil inModel: nil.
 			parser numberOfMessageSends ]
 				
+]
+
+{ #category : #metrics }
+FamixStMethod >> numberOfMethodProtocols [
+	<MSEProperty: #numberOfMethodProtocols type: #Number>
+	<derived>
+	<MSEComment: 'The number of method protocols in a class'>
+	
+	^self
+		lookUpPropertyNamed: #numberOfMethodProtocols
+		computedAs: [((self methods collect: [:each | each category]) reject: #isNil) asSet size]
+]
+
+{ #category : #metrics }
+FamixStMethod >> numberOfMethodProtocols: aNumber [
+
+	self privateState propertyAt: #numberOfMethodProtocols put: aNumber
 ]
 
 { #category : #'Famix-Extensions-private' }

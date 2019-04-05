@@ -75,7 +75,7 @@ FamixTWithMethodsTest >> testMethodsDo [
 	
 	| aCollection |
 	aCollection := Set new.
-	c2 methodsDo: [ :each | aCollection add: each ].
+	c2 methods do: [ :each | aCollection add: each ].
 	self assertCollection: aCollection hasSameElements: { m2. m3 }
 ]
 

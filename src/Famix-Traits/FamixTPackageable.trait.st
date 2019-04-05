@@ -3,6 +3,8 @@ Trait {
 	#instVars : [
 		'#parentPackage => FMOne type: #FamixTPackage opposite: #childEntities'
 	],
+	#traits : 'FamixTWithSourceAnchor',
+	#classTraits : 'FamixTWithSourceAnchor classTrait',
 	#category : #'Famix-Traits-Package'
 }
 

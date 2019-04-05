@@ -927,7 +927,7 @@ FamixGenerator >> defineGlueingTraits [
 
 ]
 
-{ #category : #definition }
+{ #category : #'as yet unclassified' }
 FamixGenerator >> defineProperties [
 
 	((tFileAnchor property: #correspondingFile type: #FamixTFile) 
@@ -950,8 +950,6 @@ FamixGenerator >> defineProperties [
 		comment: 'Generic container for language dependent modifiers.';
 		multivalued).
 
-	((tMethod property: #timeStamp type: #String)
-		comment: 'TimeStamp of the method with author and time of the last change').
 	((tMethod property: #kind type: #String) 
 		comment: 'Tag indicating a setter, getter, constant, constructor, or abstract method').
 	((tMethod property: #isClassSide type: #Boolean) 

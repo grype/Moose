@@ -28,9 +28,38 @@ FamixTWithSourceAnchor classSide >> generatedTraitNames [
 	^ #()
 ]
 
+{ #category : #metrics }
+FamixTWithSourceAnchor >> computeNumberOfLinesOfCode [
+	self hasSourceAnchor 
+		ifTrue: [ ^ self sourceAnchor lineCount ].
+	^ (self sourceText = '')
+			ifTrue: [ self notExistentMetricValue ]
+			ifFalse: [ self sourceText lineCount ]
+]
+
 { #category : #testing }
 FamixTWithSourceAnchor >> hasSourceAnchor [
 	^ self sourceAnchor notNil
+]
+
+{ #category : #metrics }
+FamixTWithSourceAnchor >> notExistentMetricValue [
+	^ self explicitRequirement
+]
+
+{ #category : #metrics }
+FamixTWithSourceAnchor >> numberOfLinesOfCode [
+	<MSEProperty: #numberOfLinesOfCode type: #Number>
+	<MSEComment: 'The number of lines of code in a method.'>
+	^ self
+		lookUpPropertyNamed: #numberOfLinesOfCode
+		computedAs: [ self computeNumberOfLinesOfCode ]
+]
+
+{ #category : #metrics }
+FamixTWithSourceAnchor >> numberOfLinesOfCode: aNumber [
+
+	self privateState propertyAt: #numberOfLinesOfCode put: aNumber
 ]
 
 { #category : #metrics }
