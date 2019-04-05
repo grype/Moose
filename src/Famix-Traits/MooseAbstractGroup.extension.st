@@ -148,7 +148,7 @@ MooseAbstractGroup >> allModelMethods [
 	
 	^ self privateState
 		cacheAt: 'All model methods'
-		ifAbsentPut: [ self allMethods reject: [ :each | each parentTypeIsStub ] ]
+		ifAbsentPut: [ self allMethods reject: #isStub ]
 ]
 
 { #category : #'*Famix-Traits' }

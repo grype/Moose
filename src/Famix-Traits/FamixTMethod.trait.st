@@ -238,12 +238,6 @@ FamixTMethod >> parentTypeGroup [
 			with: (self parentType)
 ]
 
-{ #category : #testing }
-FamixTMethod >> parentTypeIsStub [
-
-	^ self parentType ifNotNil: [ :e | e isStub ] ifNil: [ true ]
-]
-
 { #category : #accessing }
 FamixTMethod >> timeStamp [
 
