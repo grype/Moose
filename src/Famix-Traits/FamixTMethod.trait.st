@@ -6,13 +6,11 @@ A FAMIXMethod is always contained in a parentType.
 Trait {
 	#name : #FamixTMethod,
 	#instVars : [
-		'#category',
-		'#hasClassScope',
 		'#isAbstract',
+		'#isClassSide',
 		'#isPublic',
 		'#kind',
-		'#parentType => FMOne type: #FamixTWithMethods opposite: #methods',
-		'#timeStamp'
+		'#parentType => FMOne type: #FamixTWithMethods opposite: #methods'
 	],
 	#category : #'Famix-Traits-Method'
 }
@@ -38,30 +36,13 @@ FamixTMethod classSide >> famixTMethodRelatedGroup [
 FamixTMethod classSide >> generatedSlotNames [
 	<generated>
 	'FamixTMethod class>>#generatedSlotNames'.
-	^ #(category hasClassScope kind parentType timeStamp)
+	^ #(isClassSide kind parentType)
 ]
 
 { #category : #generator }
 FamixTMethod classSide >> generatedTraitNames [
 	<generated>
 	^ #()
-]
-
-{ #category : #accessing }
-FamixTMethod >> category [
-
-	<MSEProperty: #category type: #String>
-	<generated>
-	<MSEComment: 'Category of the method'>
-	^ category
-]
-
-{ #category : #accessing }
-FamixTMethod >> category: anObject [
-
-	<generated>
-	category := anObject
-
 ]
 
 { #category : #metrics }
@@ -80,19 +61,19 @@ FamixTMethod >> cyclomaticComplexity: aNumber [
 ]
 
 { #category : #accessing }
-FamixTMethod >> hasClassScope [
+FamixTMethod >> isClassSide [
 
-	<MSEProperty: #hasClassScope type: #Boolean>
+	<MSEProperty: #isClassSide type: #Boolean>
 	<generated>
 	<MSEComment: 'True if class-side method'>
-	^ hasClassScope
+	^ isClassSide
 ]
 
 { #category : #accessing }
-FamixTMethod >> hasClassScope: anObject [
+FamixTMethod >> isClassSide: anObject [
 
 	<generated>
-	hasClassScope := anObject
+	isClassSide := anObject
 
 ]
 
@@ -212,21 +193,4 @@ FamixTMethod >> parentTypeGroup [
 	<navigation: 'ParentType'>
 	^ MooseGroup
 			with: (self parentType)
-]
-
-{ #category : #accessing }
-FamixTMethod >> timeStamp [
-
-	<MSEProperty: #timeStamp type: #String>
-	<generated>
-	<MSEComment: 'TimeStamp of the method with author and time of the last change'>
-	^ timeStamp
-]
-
-{ #category : #accessing }
-FamixTMethod >> timeStamp: anObject [
-
-	<generated>
-	timeStamp := anObject
-
 ]
