@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixStType,
 	#superclass : #FamixStContainerEntity,
-	#traits : 'FamixTReferenceable + FamixTType + FamixTWithAttributes + FamixTWithTypedStructures',
-	#classTraits : 'FamixTReferenceable classTrait + FamixTType classTrait + FamixTWithAttributes classTrait + FamixTWithTypedStructures classTrait',
+	#traits : 'FamixTReferenceable + FamixTType + FamixTWithAttributes + FamixTWithTypedStructures + FamixTClassHierarchyNavigation + FamixTWithSubInheritances + FamixTContainingWithInvocationsGlue + FamixTContainingWithStatementsGlue',
+	#classTraits : 'FamixTReferenceable classTrait + FamixTType classTrait + FamixTWithAttributes classTrait + FamixTWithTypedStructures classTrait + FamixTClassHierarchyNavigation classTrait + FamixTWithSubInheritances classTrait + FamixTContainingWithInvocationsGlue classTrait + FamixTContainingWithStatementsGlue classTrait',
 	#category : #'Famix-PharoSmalltalk-Entities-Entities'
 }
 

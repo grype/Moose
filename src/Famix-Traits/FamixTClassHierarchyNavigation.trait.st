@@ -54,6 +54,7 @@ FamixTClassHierarchyNavigation >> allSuperclassesDo: aBlock [
 
 { #category : #enumerating }
 FamixTClassHierarchyNavigation >> allSuperclassesWithoutAliasesDo: aBlock [
+	self superInheritances ifNil: [ ^ self ].
 	self superInheritances do: [:each | aBlock value: each superclass].
 	self superInheritances do: [:each | each superclass allSuperclassesDo: aBlock]
 ]
